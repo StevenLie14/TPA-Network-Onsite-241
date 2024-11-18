@@ -25,7 +25,7 @@ export const Navbar = () => {
           >
             {user && (
               <img
-                src={user.avatar ? user.avatar : "/assets/download (6).png"}
+                src={user.avatar ? process.env.API_URL + user.avatar : "/assets/download (6).png"}
                 alt={"p"}
               ></img>
             )}

@@ -24,7 +24,7 @@ export const Card = ({
       }}
     >
       <div className={"cardImage"}>
-        <img src={playlist.image} alt={"placeholder"} />
+        <img src={process.env.API_URL + playlist.image} alt={"placeholder"} />
         {play && (
           <span className={"play"} onClick={handlePlayClick}>
             <Play />

@@ -11,7 +11,7 @@ export const AlbumCard = ({ album, play }: { album: Album; play: boolean }) => {
     <div className={"card"}>
       <Link to={"/album/" + album.albumId}>
         <div className={"cardImage"}>
-          <img src={album.banner} alt={"placeholder"} />
+          <img src={process.env.API_URL + album.banner} alt={"placeholder"} />
           {play && (
             <span className={"play"} onClick={handlePlayClick}>
               <Play />

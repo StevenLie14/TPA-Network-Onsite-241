@@ -16,7 +16,7 @@ export const TopProfileCard = ({
         <img
           src={
             result.song.artist.user.avatar
-              ? result.song.artist.user.avatar
+              ? process.env.API_URL + result.song.artist.user.avatar
               : "/assets/download (6).png"
           }
           alt={"placeholder"}

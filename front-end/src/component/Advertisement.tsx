@@ -16,7 +16,7 @@ export const Advertisement = () => {
         {/*/>*/}
       </div>
       <div className="trackImage">
-        <img src={advertise?.image} alt="Song Cover" />
+        <img src={process.env.API_URL +advertise?.image} alt="Song Cover" />
       </div>
       <div className="songTitle">
         <div>

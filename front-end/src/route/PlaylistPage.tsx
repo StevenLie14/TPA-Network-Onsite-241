@@ -86,7 +86,7 @@ export const PlaylistPage = () => {
         <Main setSearch={null}>
           <div className={"profileHeader"}>
             <div>
-              <img className={"song"} src={playlist?.image} alt={"avatar"} />
+              <img className={"song"} src={process.env.API_URL + playlist?.image} alt={"avatar"} />
             </div>
             <div style={{ margin: "1rem" }}>
               <p>Playlist</p>
@@ -96,7 +96,7 @@ export const PlaylistPage = () => {
                 <img
                   src={
                     playlist?.user.avatar
-                      ? playlist.user.avatar
+                      ? process.env.API_URL + playlist.user.avatar
                       : "/assets/download (6).png"
                   }
                   alt={"avatar"}

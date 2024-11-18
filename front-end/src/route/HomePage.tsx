@@ -128,7 +128,7 @@ export const HomePage = () => {
                   }}
                 >
                   <div className={"gallerySong"}>
-                    <img src={play.song.album.banner} alt={"gallery"} />
+                    <img src={process.env.API_URL + play.song.album.banner} alt={"gallery"} />
                     <h5>{play.song.title}</h5>
                   </div>
                   {play.song == song ? (

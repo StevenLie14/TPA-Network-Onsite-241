@@ -16,7 +16,7 @@ export const ProfileCard = ({ user }: { user: User }) => {
     <div className={"card"} onClick={handleNavigates}>
       <div className={"cardImage"}>
         <img
-          src={user.avatar ? user.avatar : "/assets/download (6).png"}
+          src={user.avatar ? process.env.API_URL + user.avatar : "/assets/download (6).png"}
           alt={"placeholder"}
           className={"profilePic"}
         />

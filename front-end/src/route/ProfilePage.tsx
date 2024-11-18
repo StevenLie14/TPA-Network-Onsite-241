@@ -151,7 +151,7 @@ export const ProfilePage = () => {
                   <img
                     src={
                       userProfile.avatar
-                        ? userProfile.avatar
+                        ? process.env.API_URL + userProfile.avatar
                         : "/assets/download (6).png"
                     }
                     alt={"avatar"}
@@ -162,7 +162,7 @@ export const ProfilePage = () => {
                 <img
                   src={
                     userProfile.avatar
-                      ? userProfile.avatar
+                      ? process.env.API_URL + userProfile.avatar
                       : "/assets/download (6).png"
                   }
                   alt={"avatar"}

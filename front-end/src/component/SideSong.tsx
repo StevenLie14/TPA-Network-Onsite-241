@@ -35,7 +35,7 @@ export const SideSong = ({
     <div className="sideSong" onClick={handleNavigate}>
       <div className={"albumPic"}>
         {/*{song != songs && <Play />}*/}
-        <img src={songs.album.banner} alt={songs.title} className="albumPic" />
+        <img src={process.env.API_URL + songs.album.banner} alt={songs.title} className="albumPic" />
       </div>
       <div className="song-details">
         <h3 className="song-title">{songs.title}</h3>

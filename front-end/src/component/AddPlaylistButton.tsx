@@ -79,7 +79,7 @@ export const AddPlaylistButton = ({ song }: { song: Song }) => {
             }}
             className={"bookmark"}
           >
-            <img src={play.image} alt={play.title} />
+            <img src={process.env.API_URL + play.image} alt={play.title} />
             <p className={"link"}>{play.title}</p>
             <Bookmark
               onClick={() => {

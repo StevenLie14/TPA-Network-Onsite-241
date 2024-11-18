@@ -163,9 +163,9 @@ export const ControlMusic = () => {
         <img
           src={
             advertise
-              ? advertise.image
+              ? process.env.API_URL + advertise.image
               : song
-                ? song.album.banner
+                ? process.env.API_URL + song.album.banner
                 : "/assets/download (6).png"
           }
           alt=""

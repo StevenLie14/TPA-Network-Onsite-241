@@ -141,7 +141,7 @@ export const Header = ({
       <div className={"right"}>
         <div className="dropdown">
           <img
-            src={user?.avatar ?? "/assets/download (6).png"}
+            src={process.env.API_URL + user?.avatar ?? "/assets/download (6).png"}
             alt={"p"}
             className="profile"
             onClick={() => {

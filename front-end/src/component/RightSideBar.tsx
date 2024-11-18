@@ -24,7 +24,7 @@ export const RightSideBar = () => {
                 />
               </div>
               <div className="trackImage">
-                <img src={song?.album.banner} alt="Song Cover" />
+                <img src={process.env.API_URL +song?.album.banner} alt="Song Cover" />
               </div>
               <div className="songTitle">
                 <div>
@@ -41,7 +41,7 @@ export const RightSideBar = () => {
                   <img
                     src={
                       song?.artist.user.avatar
-                        ? song.artist.user.avatar
+                        ? process.env.API_URL + song.artist.user.avatar
                         : "/assets/download (6).png"
                     }
                     alt="Artist Avatar"

@@ -56,7 +56,7 @@ export const PlaylistTable = ({
     >
       <div className={"title"}>
         <p>{index + 1}. </p>
-        <img src={detail.song.album.banner} alt="Song Cover" />
+        <img src={process.env.API_URL + detail.song.album.banner} alt="Song Cover" />
         <div>
           <h3>{detail.song.title}</h3>
           <p>{detail.song.artist.user.username}</p>

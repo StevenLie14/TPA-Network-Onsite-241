@@ -17,7 +17,7 @@ export const TopResultTable = ({
     >
       <div className="title">
         <p>{index + 1}. </p>
-        <img src={result.song.album.banner} alt="Song Cover" />
+        <img src={process.env.API_URL + result.song.album.banner} alt="Song Cover" />
         <div>
           <h3>{result.song.title}</h3>
           <p>{result.song.artist.user.username}</p>

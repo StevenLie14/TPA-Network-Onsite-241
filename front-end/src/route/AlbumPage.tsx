@@ -94,7 +94,7 @@ export const AlbumPage = () => {
         <Main setSearch={null}>
           <div className={"profileHeader"}>
             <div>
-              <img className={"song"} src={album?.banner} alt={"avatar"} />
+              <img className={"song"} src={process.env.API_URL + album?.banner} alt={"avatar"} />
             </div>
             <div>
               <p>{album?.type}</p>
@@ -103,7 +103,7 @@ export const AlbumPage = () => {
                 <img
                   src={
                     album?.artist.user.avatar
-                      ? album.artist.user.avatar
+                      ? process.env.API_URL + album.artist.user.avatar
                       : "/assets/download (6).png"
                   }
                   alt={"avatar"}

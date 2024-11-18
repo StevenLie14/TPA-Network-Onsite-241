@@ -16,7 +16,7 @@ export const SongTable = ({ song, index }: { song: Song; index: number }) => {
     >
       <div className={"title"}>
         <p>{index + 1}. </p>
-        <img src={song.album.banner} alt="Song Cover" onClick={handleImageClick}/>
+        <img src={process.env.API_URL + song.album.banner} alt="Song Cover" onClick={handleImageClick}/>
         <h3>{song.title}</h3>
       </div>
       <p>{song.play.length}</p>

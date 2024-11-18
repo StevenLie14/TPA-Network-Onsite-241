@@ -194,7 +194,7 @@ func (p *PlaylistController) CreatePlaylist(ctx *gin.Context) {
 		ctx.JSON(http.StatusBadRequest, webResponse)
 		return
 	}
-	imageUrl := fmt.Sprintf("http://localhost:4000/public/images/%s", image)
+	imageUrl := fmt.Sprintf("/public/images/%s", image)
 	playlistRequest := request.PlayListRequest{
 		UserID:      userId,
 		Title:       title,

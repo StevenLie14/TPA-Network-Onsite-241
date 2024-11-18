@@ -91,7 +91,7 @@ export const TrackPage = () => {
         <Main setSearch={null}>
           <div className={"profileHeader"}>
             <div>
-              <img className={"song"} src={song?.album.banner} alt={"avatar"} />
+              <img className={"song"} src={process.env.API_URL + song?.album.banner} alt={"avatar"} />
             </div>
             <div>
               <p>Song</p>
@@ -130,7 +130,7 @@ export const TrackPage = () => {
           )}
           {song && (
             <div className={"fromAlbum"}>
-              <img src={song.album.banner} alt={"album image"} />
+              <img src={process.env.API_URL + song.album.banner} alt={"album image"} />
               <div>
                 <p>From the {song.album.type}</p>
                 <h2>{song.album.title}</h2>

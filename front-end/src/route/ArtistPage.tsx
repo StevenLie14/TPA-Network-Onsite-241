@@ -151,7 +151,7 @@ export const ArtistPage = () => {
         <Main setSearch={null}>
           <div className={"profileHeader"}>
             <div>
-              <img src={userProfile?.banner} alt={"avatar"} />
+              <img src={ process.env.API_URL + userProfile?.banner} alt={"avatar"} />
             </div>
             <div>
               <p>Profile</p>

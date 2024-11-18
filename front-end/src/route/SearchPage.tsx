@@ -225,8 +225,8 @@ export const SearchPage = () => {
                         <img
                           src={
                             topResult.at(0)?.type === "artist"
-                              ? topResult.at(0)?.song.artist.banner
-                              : topResult.at(0)?.song.album.banner
+                              ? process.env.API_URL + topResult.at(0)?.song.artist.banner
+                              : process.env.API_URL + topResult.at(0)?.song.album.banner
                           }
                           alt=""
                           className={

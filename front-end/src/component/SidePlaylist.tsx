@@ -11,7 +11,7 @@ export const SidePlaylist = ({ playlist }: { playlist: Playlist }) => {
       style={{ cursor: "pointer" }}
       key={playlist.playlistId}
     >
-      <img src={playlist.image} alt={""} />
+      <img src={process.env.API_URL + playlist.image} alt={""} />
       <div className={"sidePlaylistContent"}>
         <h3>{playlist.title}</h3>
         <p>{playlist.user.username}</p>

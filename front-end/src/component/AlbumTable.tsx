@@ -17,7 +17,7 @@ export const AlbumTable = ({ song, index }: { song: Song; index: number }) => {
       <div className={"title"}>
         <p>{index + 1}. </p>
         <img
-          src={song.album.banner}
+          src={process.env.API_URL + song.album.banner}
           alt="Song Cover"
           onClick={handleImageClick}
         />

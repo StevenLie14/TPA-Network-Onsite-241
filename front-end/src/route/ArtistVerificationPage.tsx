@@ -139,7 +139,7 @@ export const ArtistVerificationPage = () => {
                   <div className={"left"}>
                     <div>
                       <img
-                        src={art.artist.banner}
+                        src={process.env.API_URL + art.artist.banner}
                         alt={"art"}
                         onClick={() => {
                           const url = "/profile/" + art.artist.userId;

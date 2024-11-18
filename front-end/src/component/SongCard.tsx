@@ -26,7 +26,7 @@ export const SongCard = ({ songs, play }: { songs: Song; play: boolean }) => {
   return (
     <div className={"card"} onClick={handleNavigate}>
       <div className={"cardImage"}>
-        <img src={songs.album.banner} alt={"placeholder"} />
+        <img src={process.env.API_URL + songs.album.banner} alt={"placeholder"} />
         {play && (
           <span
             className={"play"}

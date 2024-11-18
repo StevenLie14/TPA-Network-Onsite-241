@@ -130,7 +130,7 @@ func (controller *ArtistController) CreateArtist(ctx *gin.Context) {
 		ctx.JSON(http.StatusBadRequest, webResponse)
 		return
 	}
-	imageUrl := fmt.Sprintf("http://localhost:4000/public/images/%s", image)
+	imageUrl := fmt.Sprintf("/public/images/%s", image)
 	artistRequest := request.ArtistRequest{
 		UserId:      userId,
 		Description: &description,

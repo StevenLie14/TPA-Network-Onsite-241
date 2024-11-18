@@ -22,7 +22,7 @@ export const TopAlbumCard = ({
       }}
     >
       <div className={"cardImage"}>
-        <img src={result.song.album.banner} alt={"placeholder"} />
+        <img src={process.env.API_URL + result.song.album.banner} alt={"placeholder"} />
         {play && (
           <span className={"play"} onClick={handlePlayClick}>
             <Play />

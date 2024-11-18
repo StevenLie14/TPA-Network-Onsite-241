@@ -17,7 +17,7 @@ export const SideUser = ({ user }: { user: User }) => {
       style={{ cursor: "pointer" }}
     >
       <img
-        src={user.avatar ? user.avatar : "/assets/download (6).png"}
+        src={user.avatar ? process.env.API_URL + user.avatar : "/assets/download (6).png"}
         alt={""}
       />
       <div className={"sidePlaylistContent"}>

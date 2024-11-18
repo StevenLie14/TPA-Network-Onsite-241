@@ -55,7 +55,7 @@ export const YourPostPage = () => {
         <Main setSearch={null}>
           <div className="profileHeader">
             <div>
-              <img src={artist?.banner} alt={"avatar"} />
+              <img src={process.env.API_URL + artist?.banner} alt={"avatar"} />
             </div>
             <div>
               <p>Verified Artist</p>

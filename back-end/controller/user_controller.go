@@ -207,7 +207,7 @@ func (u *UserController) Register(ctx *gin.Context) {
 		ctx.JSON(http.StatusBadRequest, webResponse)
 		return
 	}
-	link := os.Getenv("LINK_BACK_END") + "/verify-email?id=" + user.VerifyLink
+	link := os.Getenv("LINK_FRONT_END") + "/verify-email?id=" + user.VerifyLink
 	err = utils.SendEmail(user.Email, "Verification Email", fmt.Sprintf("Please click this link to verify your email: <a href=\"%s\">Verify Email</a> ", link))
 	if err != nil {
 		webResponse := response.WebResponse{
@@ -347,7 +347,7 @@ func (u *UserController) Forgot(ctx *gin.Context) {
 		ctx.JSON(http.StatusBadRequest, webResponse)
 		return
 	}
-	link := os.Getenv("LINK_BACK_END") + "/reset-pass?id=" + user.VerifyLink
+	link := os.Getenv("LINK_FRONT_END") + "/reset-pass?id=" + user.VerifyLink
 	err = utils.SendEmail(user.Email, "Change Password", fmt.Sprintf("Please click this link to change your password: <a href=\"%s\">Chang Password</a> ", link))
 
 	if err != nil {

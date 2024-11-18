@@ -1,19 +1,21 @@
 package router
 
 import (
+	"back-end/config"
 	"back-end/controller"
 	"back-end/middleware"
 	"back-end/sse"
-	"back-end/config"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"os"
 )
 
 func NewRouter(playlist *controller.PlaylistController, user *controller.UserController, h *sse.NotificationSSE, follow *controller.FollowController, song *controller.SongController, album *controller.AlbumController, queue *controller.QueueController, play *controller.PlayController, artist *controller.ArtistController, setting *controller.NotificationSettingController, search *controller.SearchController, adv *controller.AdvertisementController) *gin.Engine {
+	gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
 	cnf := config.LoadEnv()
 	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:4000", cnf.Google.RedirectURL, cnf.Google.AuthURL},
+		AllowOrigins:     []string{os.Getenv("LINK_FRONT_END"), "http://localhost:4000", cnf.Google.RedirectURL, cnf.Google.AuthURL},
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Accept-Ranges", "Content-Type", "Content-Length", "Authorization", "Origin", "Accept", "Range"},
 		AllowCredentials: true,

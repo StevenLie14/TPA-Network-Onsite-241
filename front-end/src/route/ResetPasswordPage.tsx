@@ -24,7 +24,7 @@ export const ResetPasswordPage = () => {
   useEffect(() => {
     if (id != null) {
       axios
-        .get("http://localhost:4000/user/valid-verify?id=" + id, {
+        .get(process.env.API_URL+"/user/valid-verify?id=" + id, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -68,7 +68,7 @@ export const ResetPasswordPage = () => {
     }
 
     axios
-      .post("http://localhost:4000/user/reset-password", {
+      .post(process.env.API_URL+"/user/reset-password", {
         userId: user.user_id,
         password: resetPass.password,
       })

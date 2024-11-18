@@ -19,7 +19,8 @@ export const SideBar = () => {
     if (user == null) return;
 
     axios
-      .get("http://localhost:4000/auth/get-following?id=" + user.user_id,{
+      .get(process.env.API_URL+
+          "/auth/get-following?id=" + user.user_id,{
         withCredentials: true
       })
       .then((res: AxiosResponse<WebResponse<Follow[]>>) => {

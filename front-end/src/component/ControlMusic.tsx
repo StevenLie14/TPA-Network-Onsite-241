@@ -91,7 +91,8 @@ export const ControlMusic = () => {
       if (song != null && user != null) {
         axios
           .post(
-            "http://localhost:4000/auth/play/create",
+              process.env.API_URL+
+              "/auth/play/create",
             {
               songId: song.songId,
               userId: user.user_id,

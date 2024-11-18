@@ -29,7 +29,8 @@ export const AlbumPage = () => {
   useEffect(() => {
     if (id == null) return;
     axios
-      .get("http://localhost:4000/auth/song/get-by-album?id=" + id, {
+      .get(process.env.API_URL+
+          "/auth/song/get-by-album?id=" + id, {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<Song[]>>) => {
@@ -49,7 +50,8 @@ export const AlbumPage = () => {
 
         axios
           .get(
-            "http://localhost:4000/auth/album/get-artist?id=" + albums.artistId,
+              process.env.API_URL+
+              "/auth/album/get-artist?id=" + albums.artistId,
             {
               withCredentials: true,
             },

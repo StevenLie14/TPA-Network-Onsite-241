@@ -21,7 +21,7 @@ export const YourPostPage = () => {
     if (user.role != "Artist") navigate("/home");
 
     axios
-      .get("http://localhost:4000/auth/artist/get?id=" + user.user_id, {
+      .get(process.env.API_URL+"/auth/artist/get?id=" + user.user_id, {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<Artist>>) => {
@@ -29,7 +29,7 @@ export const YourPostPage = () => {
         setArtist(artists);
         axios
           .get(
-            "http://localhost:4000/auth/album/get-artist?id=" +
+              process.env.API_URL+"/auth/album/get-artist?id=" +
               artists.artistId,
             {
               withCredentials: true,

@@ -13,13 +13,18 @@ export const AddPlaylistButton = ({ song }: { song: Song }) => {
   const addToPlaylist = (play: Playlist) => {
     if (user == null) return;
     axios
-      .post("http://localhost:4000/auth/playlist-detail", {
-        playlistId: play.playlistId,
-        songId: song.songId,
-        userId: user.user_id,
-      },{
-        withCredentials: true,
-      })
+      .post(
+        process.env.API_URL+
+        "/auth/playlist-detail",
+        {
+          playlistId: play.playlistId,
+          songId: song.songId,
+          userId: user.user_id,
+        },
+        {
+          withCredentials: true,
+        },
+      )
       .then((res) => {
         console.log(res);
         updatePlaylist();
@@ -36,7 +41,8 @@ export const AddPlaylistButton = ({ song }: { song: Song }) => {
     if (detailId == null) return;
     console.log(detailId);
     axios
-      .delete("http://localhost:4000/auth/playlist-detail?id=" + detailId,{
+      .delete(process.env.API_URL+
+          "/auth/playlist-detail?id=" + detailId, {
         withCredentials: true,
       })
       .then((res) => {

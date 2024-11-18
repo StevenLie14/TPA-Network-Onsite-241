@@ -29,7 +29,7 @@ export const TrackPage = () => {
     if (id == null) return;
 
     axios
-      .get("http://localhost:4000/auth/song/get?id=" + id, {
+      .get(process.env.API_URL+"/auth/song/get?id=" + id, {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<Song>>) => {
@@ -38,7 +38,7 @@ export const TrackPage = () => {
         console.log(songs);
         axios
           .get(
-            "http://localhost:4000/auth/song/get-by-artist?id=" +
+              process.env.API_URL+"/auth/song/get-by-artist?id=" +
               songs.artistId,
             {
               withCredentials: true,
@@ -52,7 +52,7 @@ export const TrackPage = () => {
           });
         axios
           .get(
-            "http://localhost:4000/auth/song/get-by-album?id=" + songs.albumId,
+              process.env.API_URL+"/auth/song/get-by-album?id=" + songs.albumId,
             {
               withCredentials: true,
             },

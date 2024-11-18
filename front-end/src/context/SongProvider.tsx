@@ -22,7 +22,8 @@ export const Enqueue = atom(null, (_, set, song: Song, user: User | null) => {
   if (user == null) return;
   void axios
     .post(
-      "http://localhost:4000/auth/queue/enqueue?key=" + user.user_id,
+        process.env.API_URL+
+        "/auth/queue/enqueue?key=" + user.user_id,
       {
         songId: song.songId,
         title: song.title,
@@ -50,7 +51,8 @@ export const RemoveQueue = atom(
     if (user == null) return;
     void axios
       .post(
-        "http://localhost:4000/auth/queue/remove?key=" +
+          process.env.API_URL+
+          "/auth/queue/remove?key=" +
           user.user_id +
           "&index=" +
           index.toString(),
@@ -70,7 +72,8 @@ export const Dequeue = atom(null, (get, set, user: User | null) => {
   if (get(adv) < 5) {
     set(isPause, true);
     void axios
-      .get("http://localhost:4000/auth/queue/dequeue?key=" + user.user_id, {
+      .get(process.env.API_URL+
+          "/auth/queue/dequeue?key=" + user.user_id, {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<Song>>) => {
@@ -88,7 +91,8 @@ export const Dequeue = atom(null, (get, set, user: User | null) => {
 
   if (get(advertisement) == null) {
     void axios
-      .get("http://localhost:4000/auth/adv/get", {
+      .get(process.env.API_URL+
+          "/auth/adv/get", {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<Advertisement>>) => {
@@ -113,7 +117,8 @@ export const ClearQueue = atom(null, (_, set, user: User | null) => {
   if (user == null) return;
   localStorage.setItem("nowPlaying", "");
   void axios
-    .get("http://localhost:4000/auth/queue/clear?key=" + user.user_id, {
+    .get(process.env.API_URL+
+        "/auth/queue/clear?key=" + user.user_id, {
       withCredentials: true,
     })
     .then(() => {
@@ -125,7 +130,8 @@ export const ClearQueue = atom(null, (_, set, user: User | null) => {
 export const GetAllQueue = atom(null, (_, set, user: User | null) => {
   if (user == null) return;
   void axios
-    .get("http://localhost:4000/auth/queue/get-all?key=" + user.user_id, {
+    .get(process.env.API_URL+
+        "/auth/queue/get-all?key=" + user.user_id, {
       withCredentials: true,
     })
     .then((res: AxiosResponse<WebResponse<Song[]>>) => {
@@ -214,7 +220,8 @@ export const SongProvider = ({ children }: { children: ReactNode }) => {
     if (song == null || advCount > 5) return;
     audioRef.current?.pause();
     audioRef.current = new Audio(
-      "http://localhost:4000/auth/music?id=" + song.songId,
+        process.env.API_URL+
+        "/auth/music?id=" + song.songId,
     );
     // audioRef.current.preload = "auto";
     if (!isPaused) {
@@ -258,7 +265,8 @@ export const SongProvider = ({ children }: { children: ReactNode }) => {
     if (advertise == null) return;
     audioRef.current?.pause();
     audioRef.current = new Audio(
-      "http://localhost:4000/auth/adv?id=" + advertise.advertisementId,
+        process.env.API_URL+
+        "/auth/adv?id=" + advertise.advertisementId,
     );
     audioRef.current.preload = "metadata";
     audioRef.current.play().catch((error: unknown) => {
@@ -299,7 +307,8 @@ export const SongProvider = ({ children }: { children: ReactNode }) => {
   const updatePlaylist = () => {
     if (user == null) return;
     axios
-      .get("http://localhost:4000/auth/playlist?id=" + user.user_id, {
+      .get(process.env.API_URL+
+          "/auth/playlist?id=" + user.user_id, {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<Playlist[]>>) => {
@@ -346,7 +355,8 @@ export const SongProvider = ({ children }: { children: ReactNode }) => {
   const changeSong = (songId: string) => {
     if (user == null) return;
     axios
-      .get("http://localhost:4000/auth/song/get?id=" + songId, {
+      .get(process.env.API_URL+
+          "/auth/song/get?id=" + songId, {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<Song>>) => {

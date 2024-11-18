@@ -23,7 +23,7 @@ export const NotificationPage = () => {
     console.log(notificationSetting.notificationSettingId);
     axios
       .post(
-        "http://localhost:4000/auth/setting/update",
+        process.env.API_URL+"/auth/setting/update",
         {
           userId: user.user_id,
           notificationSettingId: notificationSetting.notificationSettingId,

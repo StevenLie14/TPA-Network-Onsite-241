@@ -26,7 +26,8 @@ export const PlaylistTable = ({
     if (user == null) return;
     axios
       .delete(
-        "http://localhost:4000/auth/playlist-detail?id=" +
+          process.env.API_URL+
+          "/auth/playlist-detail?id=" +
           detail.playlistDetailId +
           "&userId=" +
           user.user_id +

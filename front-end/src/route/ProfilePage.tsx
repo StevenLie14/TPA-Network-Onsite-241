@@ -30,7 +30,7 @@ export const ProfilePage = () => {
     if (user == null || id == undefined) return;
 
     axios
-      .get("http://localhost:4000/auth/user/get?id=" + id, {
+      .get(process.env.API_URL+"/auth/user/get?id=" + id, {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<User>>) => {
@@ -48,7 +48,7 @@ export const ProfilePage = () => {
       });
 
     axios
-      .get("http://localhost:4000/auth/playlist?id=" + id, {
+      .get(process.env.API_URL+"/auth/playlist?id=" + id, {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<Playlist[]>>) => {
@@ -60,7 +60,7 @@ export const ProfilePage = () => {
       });
 
     axios
-      .get("http://localhost:4000/auth/get-following?id=" + id, {
+      .get(process.env.API_URL+"/auth/get-following?id=" + id, {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<Follow[]>>) => {
@@ -73,7 +73,7 @@ export const ProfilePage = () => {
       });
 
     axios
-      .get("http://localhost:4000/auth/get-follower?id=" + id, {
+      .get(process.env.API_URL+"/auth/get-follower?id=" + id, {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<Follow[]>>) => {
@@ -86,7 +86,7 @@ export const ProfilePage = () => {
       });
 
     axios
-      .get("http://localhost:4000/auth/get-mutual?id=" + id, {
+      .get(process.env.API_URL+"/auth/get-mutual?id=" + id, {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<Follow[]>>) => {
@@ -115,7 +115,7 @@ export const ProfilePage = () => {
     formData.append("image", image as Blob);
     formData.append("userId", user.user_id);
     axios
-      .post("http://localhost:4000/auth/user/update-pic", formData, {
+      .post(process.env.API_URL+"/auth/user/update-pic", formData, {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<string>>) => {

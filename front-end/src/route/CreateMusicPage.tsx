@@ -136,7 +136,8 @@ export const CreateMusicPage = () => {
     const errs = [];
 
     axios
-      .get("http://localhost:4000/auth/artist/get?id=" + user.user_id, {
+      .get(process.env.API_URL+
+          "/auth/artist/get?id=" + user.user_id, {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<Artist>>) => {
@@ -147,7 +148,8 @@ export const CreateMusicPage = () => {
         formData.append("type", type);
         formData.append("artistId", artist.artistId);
         axios
-          .post("http://localhost:4000/artist/album/create", formData, {
+          .post(process.env.API_URL+
+              "/artist/album/create", formData, {
             withCredentials: true,
           })
           .then((res: AxiosResponse<WebResponse<Album>>) => {
@@ -165,7 +167,8 @@ export const CreateMusicPage = () => {
                 Math.floor(track.duration).toString(),
               );
               axios
-                .post("http://localhost:4000/artist/song/create", trackData, {
+                .post(process.env.API_URL+
+                    "/artist/song/create", trackData, {
                   withCredentials: true,
                 })
                 .then((res) => {

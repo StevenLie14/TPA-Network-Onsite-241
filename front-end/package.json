@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-oauth/google": "^0.12.1",
     "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
     "jotai": "^2.8.4",
     "lucide-react": "^0.399.0",
     "node-sass": "^9.0.0",
@@ -40,6 +41,7 @@
     "eslint-plugin-tailwindcss": "^3.17.4",
     "eslint-plugin-unused-imports": "^3.2.0",
     "prettier": "^3.3.2",
+    "sass": "^1.81.0",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
   }

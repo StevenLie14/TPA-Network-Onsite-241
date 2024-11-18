@@ -92,7 +92,7 @@ export const SearchPage = () => {
     setTimeout(() => {
       axios
         .get(
-          "http://localhost:4000/auth/search/get?keyword=" +
+            process.env.API_URL+"/auth/search/get?keyword=" +
             debounce.toUpperCase(),
           {
             withCredentials: true,

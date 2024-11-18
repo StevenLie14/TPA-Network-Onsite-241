@@ -38,7 +38,8 @@ export const HomePage = () => {
       setIsLoad(true);
       setTimeout(() => {
         axios
-          .get("http://localhost:4000/auth/album/get-random", {
+          .get(process.env.API_URL+
+              "/auth/album/get-random", {
             withCredentials: true,
           })
           .then((res: AxiosResponse<WebResponse<Album[]>>) => {
@@ -78,7 +79,8 @@ export const HomePage = () => {
     if (!user) return;
     setAlbums(undefined);
     axios
-      .get("http://localhost:4000/auth/play/get-last?id=" + user.user_id, {
+      .get(process.env.API_URL+
+          "/auth/play/get-last?id=" + user.user_id, {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<Play[]>>) => {

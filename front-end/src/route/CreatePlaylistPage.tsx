@@ -67,7 +67,8 @@ export const CreatePlaylistPage = () => {
     formData.append("userId", user.user_id);
 
     axios
-      .post("http://localhost:4000/auth/playlist/create", formData, {
+      .post(process.env.API_URL+
+          "/auth/playlist/create", formData, {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<Album>>) => {

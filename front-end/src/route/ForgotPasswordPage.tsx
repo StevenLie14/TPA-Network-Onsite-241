@@ -22,7 +22,8 @@ export const ForgotPasswordPage = () => {
   const [success, setSuccess] = useState<string>("");
   const searchAccount = () => {
     axios
-      .post("http://localhost:4000/user/forgot-password?email=" + email)
+      .post(process.env.API_URL+
+          "/user/forgot-password?email=" + email)
       .then((res) => {
         console.log(res);
         setSuccess("Success! Check your email for a reset link");

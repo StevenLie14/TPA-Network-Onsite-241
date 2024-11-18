@@ -8,7 +8,8 @@ export const RichText = ({ description }: { description: string }) => {
   const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get("http://localhost:4000/auth/user/get-all", {
+      .get(process.env.API_URL+
+          "/auth/user/get-all", {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<User[]>>) => {

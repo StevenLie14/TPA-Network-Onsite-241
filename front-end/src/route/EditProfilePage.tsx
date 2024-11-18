@@ -32,7 +32,8 @@ export const EditProfilePage = () => {
     if (user == null) return;
     void axios
       .post(
-        "http://localhost:4000/auth/user/edit-prof",
+          process.env.API_URL+
+          "/auth/user/edit-prof",
         {
           userId: user.user_id,
           country: editProps.country,

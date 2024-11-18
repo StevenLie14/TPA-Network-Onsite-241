@@ -61,7 +61,8 @@ export const ArtistPage = () => {
     if (user == null || id == null) return;
 
     axios
-      .get("http://localhost:4000/auth/artist/get?id=" + id, {
+      .get(process.env.API_URL+
+          "/auth/artist/get?id=" + id, {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<Artist>>) => {
@@ -69,7 +70,8 @@ export const ArtistPage = () => {
         setUserProfile(profile);
         axios
           .get(
-            "http://localhost:4000/auth/song/get-by-artist?id=" +
+              process.env.API_URL+
+              "/auth/song/get-by-artist?id=" +
               profile.artistId,
             {
               withCredentials: true,
@@ -84,7 +86,8 @@ export const ArtistPage = () => {
           });
 
         axios
-          .get("http://localhost:4000/auth/playlist?id=" + user.user_id, {
+          .get(process.env.API_URL+
+              "/auth/playlist?id=" + user.user_id, {
             withCredentials: true,
           })
           .then((res: AxiosResponse<WebResponse<Playlist[]>>) => {
@@ -101,7 +104,8 @@ export const ArtistPage = () => {
 
         axios
           .get(
-            "http://localhost:4000/auth/album/get-artist?id=" +
+              process.env.API_URL+
+              "/auth/album/get-artist?id=" +
               profile.artistId,
             {
               withCredentials: true,

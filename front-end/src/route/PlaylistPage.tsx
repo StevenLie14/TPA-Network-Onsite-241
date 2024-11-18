@@ -28,7 +28,8 @@ export const PlaylistPage = () => {
   const updateSong = () => {
     if (id == null) return;
     axios
-      .get("http://localhost:4000/auth/playlist-id?id=" + id, {
+      .get(process.env.API_URL+
+          "/auth/playlist-id?id=" + id, {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<Playlist>>) => {
@@ -53,7 +54,8 @@ export const PlaylistPage = () => {
     if (user == null) return;
     void axios
       .delete(
-        "http://localhost:4000/auth/playlist?id=" +
+          process.env.API_URL+
+          "/auth/playlist?id=" +
           playlist.playlistId +
           "&userId=" +
           user.user_id,

@@ -11,7 +11,8 @@ export const FollowButton = ({ userFollow }: { userFollow: User }) => {
   const GetButton = () => {
     if (user) {
       axios
-        .get("http://localhost:4000/auth/get-following?id=" + user.user_id, {
+        .get(process.env.API_URL+
+            "/auth/get-following?id=" + user.user_id, {
           withCredentials: true,
         })
         .then((res: AxiosResponse<WebResponse<Follow[]>>) => {
@@ -40,7 +41,8 @@ export const FollowButton = ({ userFollow }: { userFollow: User }) => {
       if (user.user_id == userFollow.user_id) return;
       if (isFollowing) {
         axios
-          .delete("http://localhost:4000/auth/follow", {
+          .delete(process.env.API_URL+
+              "/auth/follow", {
             data: {
               followId: userFollow.user_id,
               followerId: user.user_id,
@@ -58,7 +60,8 @@ export const FollowButton = ({ userFollow }: { userFollow: User }) => {
       } else {
         axios
           .put(
-            "http://localhost:4000/auth/follow",
+              process.env.API_URL+
+              "/auth/follow",
             {
               followId: userFollow.user_id,
               followerId: user.user_id,

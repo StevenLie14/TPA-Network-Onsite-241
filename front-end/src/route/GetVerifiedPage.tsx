@@ -64,7 +64,8 @@ export const GetVerifiedPage = () => {
     formData.append("description", description);
     formData.append("userId", user.user_id);
     axios
-      .post("http://localhost:4000/auth/artist/create", formData, {
+      .post(process.env.API_URL+
+          "/auth/artist/create", formData, {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<Album>>) => {

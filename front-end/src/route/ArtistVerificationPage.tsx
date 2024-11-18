@@ -17,7 +17,8 @@ export const ArtistVerificationPage = () => {
   const onVerify = (artistId: string) => {
     axios
       .put(
-        "http://localhost:4000/admin/artist/update?id=" + artistId,
+          process.env.API_URL+
+          "/admin/artist/update?id=" + artistId,
         {},
         {
           withCredentials: true,
@@ -36,7 +37,8 @@ export const ArtistVerificationPage = () => {
     if (user == null) return;
     axios
       .delete(
-        "http://localhost:4000/admin/artist/delete?id=" +
+          process.env.API_URL+
+          "/admin/artist/delete?id=" +
           artistId +
           "&userId=" +
           userId,
@@ -60,7 +62,8 @@ export const ArtistVerificationPage = () => {
     if (user.role != "Admin") navigate("/home");
 
     axios
-      .get("http://localhost:4000/auth/artist/get-unverified", {
+      .get(process.env.API_URL+
+          "/auth/artist/get-unverified", {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<Artist[] | null>>) => {
@@ -72,7 +75,8 @@ export const ArtistVerificationPage = () => {
         const verifyArtist: VerifyArtist[] = [];
         artist.map((art) => {
           axios
-            .get("http://localhost:4000/auth/get-following?id=" + art.userId, {
+            .get(process.env.API_URL+
+                "/auth/get-following?id=" + art.userId, {
               withCredentials: true,
             })
             .then((res: AxiosResponse<WebResponse<Follow[]>>) => {
@@ -83,7 +87,8 @@ export const ArtistVerificationPage = () => {
             });
 
           axios
-            .get("http://localhost:4000/get-follower?id=" + art.userId, {
+            .get(process.env.API_URL+
+                "/get-follower?id=" + art.userId, {
               withCredentials: true,
             })
             .then((res: AxiosResponse<WebResponse<Follow[]>>) => {

@@ -34,7 +34,7 @@ export const ShowMorePage = () => {
     console.log(subtype);
     if (subtype == "browse") {
       axios
-        .get("http://localhost:4000/auth/song/get-all", {
+        .get(process.env.API_URL+"/auth/song/get-all", {
           withCredentials: true,
         })
         .then((res: AxiosResponse<WebResponse<Song[]>>) => {
@@ -51,7 +51,7 @@ export const ShowMorePage = () => {
         setIsLoad(true);
         setTimeout(() => {
           axios
-            .get("http://localhost:4000/auth/album/get-random", {
+            .get(process.env.API_URL+"/auth/album/get-random", {
               withCredentials: true,
             })
             .then((res: AxiosResponse<WebResponse<Album[]>>) => {
@@ -70,7 +70,7 @@ export const ShowMorePage = () => {
     }
     if (subtype == "recently") {
       axios
-        .get("http://localhost:4000/auth/play/get-last-rec?id=" + id, {
+        .get(process.env.API_URL+"/auth/play/get-last-rec?id=" + id, {
           withCredentials: true,
         })
         .then((res: AxiosResponse<WebResponse<Play[]>>) => {
@@ -83,7 +83,7 @@ export const ShowMorePage = () => {
 
     if (subtype == "public") {
       axios
-        .get("http://localhost:4000/auth/playlist?id=" + id, {
+        .get(process.env.API_URL+"/auth/playlist?id=" + id, {
           withCredentials: true,
         })
         .then((res: AxiosResponse<WebResponse<Playlist[]>>) => {
@@ -96,7 +96,7 @@ export const ShowMorePage = () => {
 
     if (subtype == "following") {
       axios
-        .get("http://localhost:4000/auth/get-following?id=" + id, {
+        .get(process.env.API_URL+"/auth/get-following?id=" + id, {
           withCredentials: true,
         })
         .then((res: AxiosResponse<WebResponse<Follow[]>>) => {
@@ -109,7 +109,7 @@ export const ShowMorePage = () => {
 
     if (subtype == "follower") {
       axios
-        .get("http://localhost:4000/auth/get-follower?id=" + id, {
+        .get(process.env.API_URL+"/auth/get-follower?id=" + id, {
           withCredentials: true,
         })
         .then((res: AxiosResponse<WebResponse<Follow[]>>) => {
@@ -122,7 +122,7 @@ export const ShowMorePage = () => {
 
     if (subtype == "mutual") {
       axios
-        .get("http://localhost:4000/auth/get-mutual?id=" + id, {
+        .get(process.env.API_URL+"/auth/get-mutual?id=" + id, {
           withCredentials: true,
         })
         .then((res: AxiosResponse<WebResponse<Follow[]>>) => {

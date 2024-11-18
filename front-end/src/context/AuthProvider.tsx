@@ -39,7 +39,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const getUser = () => {
     axios
-      .get("http://localhost:4000/auth/user/current-user", {
+      .get(process.env.API_URL+
+          "/auth/user/current-user", {
         withCredentials: true,
       })
       .then((res: AxiosResponse<WebResponse<User>>) => {
@@ -47,7 +48,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setAuthenticated(true);
         const userId = res.data.data.user_id;
         const eventSource = new EventSource(
-          "http://localhost:4000/auth/sse/notification-stream?id=" + userId,
+            process.env.API_URL+
+            "/auth/sse/notification-stream?id=" + userId,
           { withCredentials: true },
         );
 
@@ -103,7 +105,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const login = (user: LoginProps) => {
     axios
       .post(
-        "http://localhost:4000/user/login",
+          process.env.API_URL+
+          "/user/login",
         {
           Email: user.email,
           Password: user.password,
@@ -129,7 +132,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const register = (user: RegisterProps) => {
     axios
-      .put("http://localhost:4000/user/register", {
+      .put(process.env.API_URL+
+          "/user/register", {
         Email: user.email,
         Password: user.password,
         Username: user.username,
@@ -150,7 +154,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     onSuccess: (codeResponse) => {
       axios
         .get(
-          `http://localhost:4000/auth/google/callback?code=${codeResponse.code}`,
+          `${process.env.API_URL}/auth/google/callback?code=${codeResponse.code}`,
           {
             headers: {
               "Content-Type": "application/json",
@@ -173,7 +177,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = () => {
     if (user == null) return;
     void axios
-      .get("http://localhost:4000/auth/user/logout?id=" + user.user_id, {
+      .get(process.env.API_URL+
+          "/auth/user/logout?id=" + user.user_id, {
         withCredentials: true,
       })
       .then(() => {

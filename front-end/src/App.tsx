@@ -36,7 +36,7 @@ function App() {
     <Router>
       <GoogleOAuthProvider
         clientId={
-          "841490014876-nc1omea8apsbevhcouqgbhq9mmc5tq7k.apps.googleusercontent.com"
+          process.env.GOOGLE_CLIENT_PROVIDER
         }
       >
         <ThemeProvider>

@@ -13,7 +13,7 @@ export const VerifyEmail = () => {
   useEffect(() => {
     if (id != null) {
       axios
-        .post("http://localhost:4000/user/update-ver?id=" + id, {
+        .post(process.env.API_URL+"/user/update-ver?id=" + id, {
           headers: {
             "Content-Type": "application/json",
           },

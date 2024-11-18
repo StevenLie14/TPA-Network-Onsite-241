@@ -74,7 +74,7 @@ export const Header = ({
     const dataForm = new FormData();
     dataForm.append("files", music);
     axios
-      .post(`http://127.0.0.1:5000/getresult`, dataForm, {
+      .post(`${process.env.FLASK_URL}/getresult`, dataForm, {
         headers: {
           "Content-Type": "multipart/form-data",
           "Access-Control-Allow-Origin": "*",

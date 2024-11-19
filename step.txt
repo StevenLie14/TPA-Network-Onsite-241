@@ -3,18 +3,18 @@ Step by Step Dockerfile:
 2. cd ke folder hasil clone (tergantung mw run docker run di mana) run satu per satu
 3. sudo docker build .
 4. sudo docker network create my-network
-5. docker run -p port:port -d --network my-network <image_id>
+5. docker run -p port:port -d --network my-network --name <name> <image_id>
 List Port :
-- FrontEnd : 5173
-- BackEnd : 4000
-- Database : 5432
-- Redis : 6379
-- Flask : 5000
+- FrontEnd : 5173 -> name = frontend
+- BackEnd : 4000 -> name = backend
+- Database : 5432 -> name = postgres
+- Redis : 6379 -> name = redis
+- Flask : 5000 -> name = flask
 
 List Syntax :
-- FrontEnd : `docker run -p 5173:5173 -d --network my-network <image_id>`
-- BackEnd : `docker run -p 4000:4000 -d --network my-network <image_id>`
-- Database : sudo docker run -d -p 5432:5432 --network my-network -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=StevenLie -e POSTGRES_DB=tpa-web  -v postgres_data:/var/lib/postgresql/data \postgres:latest
-- Redis : `docker run -p 6379:6379 -d --network my-network redis`
-- Flask : `docker run -p 5000:5000 -d --network my-network <image_id>`
+- FrontEnd : sudo docker run -p 5173:5173 -d --name frontend --network my-network <image_id>
+- BackEnd : sudo docker run -p 4000:4000 -d --name backend --network my-network <image_id>
+- Database : sudo docker run -d -p 5432:5432 --name postgres --network my-network -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=StevenLie -e POSTGRES_DB=tpa-web  -v postgres_data:/var/lib/postgresql/data \postgres:latest
+- Redis : sudo docker run -p 6379:6379 -d --name redis --network my-network redis
+- Flask : sudo docker run -p 5000:5000 -d --name flask --network my-network <image_id>
 6. docker ps (buat cek apakah container sudah berjalan atau belum)

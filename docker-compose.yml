@@ -1,0 +1,86 @@
+version: '3.9'
+
+services:
+  frontend:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    networks:
+      - my-network
+    environment:
+      - API_URL=http://192.168.19.129:4000
+      - FLASK_URL=http://192.168.19.129:5000
+      - GOOGLE_CLIENT_PROVIDER=google
+
+  backend:
+    build:
+      context: ./back-end
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    networks:
+      - my-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_PASS=StevenLie
+      - DATABASE_NAME=tpa-web
+      - REDIS_ADDRESS=redis:6379
+      - MAIL_HOST=smtp.gmail.com
+      - MAIL_PORT=587
+      - MAIL_USER=vincentiusjonathantanujaya@gmail.com
+      - MAIL_PASS=qrlionztgrtcxxme
+      - OAUTH_CLIENT_ID=""
+      - OAUTH_CLIENT_SECRET=""
+      - OAUTH_REDIRECT_URL=http://localhost:5173
+      - OAUTH_AUTH_URL=http://localhost:8080
+      - LINK_FRONT_END=http://192.168.19.129:5173
+      - LINK_BACK_END=http://backend:4000
+
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=StevenLie
+      - POSTGRES_DB=tpa-web
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - my-network
+    healthcheck:
+      test: ["CMD-SHELL","pg_isready -U postgres"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - my-network
+
+  flask:
+    build:
+      context: ./flask-server
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local

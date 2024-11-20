@@ -3,6 +3,7 @@ Step by Step Dockerfile:
 2. cd ke folder hasil clone (tergantung mw run docker run di mana) run satu per satu
 3. sudo docker build -t <frontend/backend/flask>.
 4. sudo docker network create my-network
+-------------------------------- (GA PERLU DI RUN KARNA UDAH PAKE COMPOSE)
 5. docker run -p port:port -d --network my-network --name <name> <image_id>
 List Port :
 - FrontEnd : 5173 -> name = frontend
@@ -18,3 +19,6 @@ List Syntax :
 - Redis : sudo docker run -p 6379:6379 -d --name redis --network my-network redis
 - Flask : sudo docker run -p 5000:5000 -d --name flask --network my-network flask
 6. docker ps (buat cek apakah container sudah berjalan atau belum)
+--------------------------------
+
+7. sudo docker-compose up --build

@@ -20,5 +20,8 @@ List Syntax :
 - Flask : sudo docker run -p 5000:5000 -d --name flask --network my-network flask
 6. docker ps (buat cek apakah container sudah berjalan atau belum)
 --------------------------------
-
+Install Docker Compose
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
 7. sudo docker-compose up --build
